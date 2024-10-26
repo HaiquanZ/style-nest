@@ -1,0 +1,63 @@
+<div>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{array[0].img}}" class="d-block w-100" alt="image model">
+            </div>
+            <div class="carousel-item">
+                <img src="{{array[1].img}}" class="d-block w-100" alt="image model">
+            </div>
+            <div class="carousel-item">
+                <img src="{{array[2].img}}" class="d-block w-100" alt="image model">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mg-t-20 mg-b-20" nz-row nzJustify="space-between" nzAlign="middle">
+        <div nz-row nzAlign="middle">
+            <div class="mg-r-20">
+                <img width="50" height="50" src="../../../assets/service1.png" alt="Services">
+            </div>
+            <div>
+                <h5 nz-typography>Thanh toán khi nhận hàng (COD)</h5>
+                <span>Giao hàng toàn quốc.</span>
+            </div>
+        </div>
+        <div nz-row nzAlign="middle">
+            <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service2.png" alt="Services"></div>
+            <div>
+                <h5 nz-typography>Miễn phí giao hàng</h5> <span>Với đơn hàng trên
+                    599.000đ.</span>
+            </div>
+        </div>
+        <div nz-row nzAlign="middle">
+            <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service3.png" alt="Services"></div>
+            <div>
+                <h5 nz-typography>Đổi hàng miễn phí</h5> <span>Trong 30 ngày kể từ ngày
+                    mua.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mg-t-40">
+        <h2 style="font-weight: 600; text-align: left;">Ưu đãi nổi bật</h2>
+
+        <div class="voucher-items-list">
+            <div class="voucher-item" *ngFor="let item of array"
+                style="width: 100%; display: inline-block;">
+                <div class="voucher-item-info">
+                    <div class="voucher-item-detail">
+                        <div class="voucher-item-title">Voucher 50K </div>
+                        <div class="voucher-item-des">Voucher 50k cho đơn từ 599k</div>
+                        <div class="voucher-item-date"><span class="expire">Sắp hết hạn: Còn 24 giờ</span>
+                            <div class="voucher-item-condition">Điều kiện</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-action">
+                        <div class="action"><button nz-button nzType="primary">Lưu Mã</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

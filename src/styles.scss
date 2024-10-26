@@ -1,1 +1,159 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-color: #1890FF;
+    --main-color: #1890FF;
+    --gray-color: #CCCFDB;
+    --theme-color: #F4F6FF;
+    --success-light: #F6FFED;
+    --success-weight: #52C41A;
+    --error-light: #FFF2F0;
+    --error-weight: #FF4D4F;
+    --warning-weight: #FAAD14;
+    --warning-light: #FFFBE6;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    background-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* HACK size 1rem =10px */
+    font-size: 62.5%;
+    /* box-sizing: border-box; */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+//define common css
+.logo-script {
+    font-family: "Lugrasimo", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--primary-color);
+}
+
+//config antd
+::ng-deep {}
+
+.ant-input {
+    height: 45px !important;
+    font-size: 16px !important;
+    border-radius: 10px !important;
+}
+
+.ant-btn {
+    border-radius: 10px !important;
+    font-weight: bold;
+    height: 45px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    font-size: 17px;
+}
+
+.ant-form-item-label {
+    font-weight: 500;
+}
+
+.ant-form-item-label>label {
+    font-size: 16px !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 8px !important;
+}
+
+// css
+@for $i from 0 through 220 {
+    .min-width-#{$i} {
+        min-width: #{$i}px !important;
+    }
+
+    .w-cs-#{$i}-px {
+        width: #{$i}px !important;
+    }
+
+    .fs-cs-#{$i} {
+        font-size: #{$i}px !important;
+
+        * {
+            font-size: #{$i}px !important;
+        }
+    }
+
+    .border-radius-#{$i} {
+        border-radius: #{$i}px !important;
+    }
+
+    .mg-t-#{$i} {
+        margin-top: #{$i}px !important;
+    }
+
+    .mg-b-#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+
+    .mg-l-#{$i} {
+        margin-left: #{$i}px !important;
+    }
+
+    .mg-r-#{$i} {
+        margin-right: #{$i}px !important;
+    }
+
+    .mg-tb-#{$i} {
+        margin-top: #{$i}px !important;
+        margin-bottom: #{$i}px !important;
+    }
+
+    .mg-lr-#{$i} {
+        margin-left: #{$i}px !important;
+        margin-right: #{$i}px !important;
+    }
+
+    .pd-#{$i} {
+        padding: #{$i}px !important;
+    }
+
+    .pd-t-#{$i} {
+        padding-top: #{$i}px !important;
+    }
+
+    .pd-b-#{$i} {
+        padding-bottom: #{$i}px !important;
+    }
+
+    .pd-l-#{$i} {
+        padding-left: #{$i}px !important;
+    }
+
+    .pd-r-#{$i} {
+        padding-right: #{$i}px !important;
+    }
+
+    .pd-tb-#{$i} {
+        padding-top: #{$i}px !important;
+        padding-bottom: #{$i}px !important;
+    }
+
+    .pd-lr-#{$i} {
+        padding-left: #{$i}px !important;
+        padding-right: #{$i}px !important;
+    }
+
+    .mg-#{$i} {
+        margin: #{$i}px !important;
+    }
+
+    .flex-gap-#{$i} {
+        gap: #{$i}px !important;
+    }
+
+}

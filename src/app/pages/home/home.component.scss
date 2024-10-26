@@ -1,0 +1,102 @@
+.voucher-items-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.voucher-item-detail {
+    flex-grow: 1;
+    padding: 16px 16px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(40, 41, 61, .08), 0 .5px 6px rgba(96, 97, 112, .16);
+    width: calc(100% - 141px);
+    width: -moz-calc(100% - 141px);
+    width: -webkit-calc(100% - 141px);
+    width: -o-calc(100% - 141px);
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.voucher-item {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.voucher-item-info {
+    display: -webkit-flex;
+    display: flex;
+    border-radius: 4px;
+    min-height: 116px;
+    position: relative;
+    width: 100%;
+}
+
+.voucher-item-title {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.voucher-item-des {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.voucher-item-date {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: auto;
+    align-items: flex-end;
+    line-height: 16px;
+    justify-content: space-between;
+}
+
+.voucher-item-date .expire {
+    color: #ff8674;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.voucher-item-condition {
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.voucher-item-action {
+    width: 110px;
+    min-width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 4;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(40, 41, 61, .08), 0 .5px 6px rgba(96, 97, 112, .16);
+    position: relative;
+    border-radius: 0 4px 4px 0;
+    padding: 0 17px 0 2px;
+}
+
+.block-voucher .voucher-item-action .action {
+    width: auto;
+    font-weight: 600;
+    background-color: #63b1bc;
+    color: #fff;
+}
