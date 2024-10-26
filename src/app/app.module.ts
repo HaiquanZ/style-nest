@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AntdModule } from './component/antd/antd.module';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ClothingItemComponent } from './component/clothing-item/clothing-item.component';
 
 registerLocaleData(vi);
 
@@ -20,7 +21,8 @@ registerLocaleData(vi);
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ClothingItemComponent
   ],
   imports: [
     BrowserModule,

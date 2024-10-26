@@ -24,4 +24,23 @@ export class HomeComponent {
       img: 'https://media.canifa.com/Simiconnector/BannerSlider/h/w/hw_topbanner_desktop-18.09.webp'
     },
   ];
+
+  arrayCategory = [
+    { 
+      id: 1,
+      img: 'https://media.canifa.com/Simiconnector/nu_spmoi-04Oct.webp'
+    },
+    { 
+      id: 2,
+      img: 'https://media.canifa.com/Simiconnector/nam_spmoi-04Oct.webp'
+    },
+    { 
+      id: 3,
+      img: 'https://media.canifa.com/Simiconnector/girl_spmoi-04Oct.webp'
+    },
+    { 
+      id: 4,
+      img: 'https://media.canifa.com/Simiconnector/boy_spmoi-04Oct.webp'
+    },
+  ];
 }

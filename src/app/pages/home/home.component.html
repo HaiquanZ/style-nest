@@ -43,8 +43,7 @@
         <h2 style="font-weight: 600; text-align: left;">Ưu đãi nổi bật</h2>
 
         <div class="voucher-items-list">
-            <div class="voucher-item" *ngFor="let item of array"
-                style="width: 100%; display: inline-block;">
+            <div class="voucher-item" *ngFor="let item of array" style="width: 100%; display: inline-block;">
                 <div class="voucher-item-info">
                     <div class="voucher-item-detail">
                         <div class="voucher-item-title">Voucher 50K </div>
@@ -58,6 +57,26 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="font-weight: 600; text-align: left;">Sản phẩm mới</h2>
+
+        <div class="mg-t-25 mg-b-25" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
+            <a *ngFor="let item of arrayCategory" tabindex="-1" aria-label="Banner"><img width="100%" src="{{item.img}}"
+                    alt=""></a>
+        </div>
+
+        <div class="mg-t-20 mg-b-20">
+            <img src="https://media.canifa.com/Simiconnector/1.MacNha_blockhomepage_desktop-30Sep.webp" width="100%">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
+            <app-clothing-item></app-clothing-item>
+            <app-clothing-item></app-clothing-item>
+            <app-clothing-item></app-clothing-item>
+            <app-clothing-item></app-clothing-item>
         </div>
     </div>
 </div>

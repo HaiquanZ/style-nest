@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <img width="100%" src="https://canifa.com/img/500/750/resize/8/l/8ls24w001-sb060-xl-1-ghep-u.webp"
+            alt="iamge of product">
+    </div>
+
+    <div>
+        <div class="color-radio-group">
+            <label *ngFor="let color of colorList">
+                <input type="radio" [value]="color" [(ngModel)]="colorSelected" />
+                <span class="color-button" [ngStyle]="{ 'background-color': color }"></span>
+            </label>
+        </div>
+    </div>
+</div>

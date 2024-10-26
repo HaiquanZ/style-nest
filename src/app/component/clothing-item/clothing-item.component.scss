@@ -1,0 +1,41 @@
+.color-radio-group label {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.color-radio-group input[type="radio"] {
+    display: none;
+    /* Ẩn radio button mặc định */
+}
+
+.color-button {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border 0.2s;
+}
+
+/* Định nghĩa màu cho từng nút */
+.color-button.red {
+    background-color: red;
+}
+
+.color-button.blue {
+    background-color: blue;
+}
+
+.color-button.green {
+    background-color: green;
+}
+
+input[type="radio"]:checked+.color-button {
+    border: 3px solid #AEAEAE;
+    /* Viền dày hơn */
+    transform: scale(1.2);
+    /* Tăng kích thước */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    /* Đổ bóng */
+}
