@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'style-nest';
   offsetTop = 0;
-
   visible = false;
+
+  constructor(private router: Router){}
 
   open(): void {
     this.visible = true;
@@ -17,5 +19,6 @@ export class AppComponent {
 
   close(): void {
     this.visible = false;
+    this.router.navigate(['/payment']);
   }
 }
