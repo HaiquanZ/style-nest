@@ -43,31 +43,12 @@ html {
 //config antd
 ::ng-deep {}
 
-.ant-input {
-    height: 45px !important;
-    font-size: 16px !important;
-    border-radius: 10px !important;
-}
-
-.ant-btn {
-    border-radius: 10px !important;
-    font-weight: bold;
-    height: 45px;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    font-size: 17px;
-}
-
 .ant-form-item-label {
     font-weight: 500;
 }
 
 .ant-form-item-label>label {
     font-size: 16px !important;
-}
-
-.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-    border-radius: 8px !important;
 }
 
 // css

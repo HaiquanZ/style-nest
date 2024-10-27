@@ -1,15 +1,16 @@
-<div>
-    <div>
-        <img width="100%" src="https://canifa.com/img/500/750/resize/8/l/8ls24w001-sb060-xl-1-ghep-u.webp"
-            alt="iamge of product">
-    </div>
-
-    <div>
-        <div class="color-radio-group">
-            <label *ngFor="let color of colorList">
-                <input type="radio" [value]="color" [(ngModel)]="colorSelected" />
-                <span class="color-button" [ngStyle]="{ 'background-color': color }"></span>
-            </label>
+<div class="mg-b-20">
+    <nz-card nz-popover nzHoverable style="width: 100%" [nzCover]="coverTemplate" nzPopoverTitle="Bộ mặc nhà nam"
+        nzPopoverContent="Xem chi tiết">
+        <div nz-row nzJustify="center" class="mg-b-10">
+            <div *ngFor="let color of colorList" class="mg-l-5 mg-r-5">
+                <input type="radio" name="color" [value]="color" [(ngModel)]="colorSelected"
+                    [style.background-color]="color" />
+                <!-- <label [style.color]="color">{{ color.name }}</label> -->
+            </div>
         </div>
-    </div>
+        <nz-card-meta nzTitle="Bộ mặc nhà nam" nzDescription="599.000 ₫"></nz-card-meta>
+    </nz-card>
 </div>
+<ng-template #coverTemplate>
+    <img alt="example" src="https://canifa.com/img/500/750/resize/8/l/8ls24w001-sb060-xl-1-ghep-u.webp" />
+</ng-template>

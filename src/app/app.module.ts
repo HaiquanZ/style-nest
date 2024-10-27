@@ -14,6 +14,8 @@ import { AntdModule } from './component/antd/antd.module';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ClothingItemComponent } from './component/clothing-item/clothing-item.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { CartComponent } from './component/cart/cart.component';
 
 registerLocaleData(vi);
 
@@ -22,7 +24,9 @@ registerLocaleData(vi);
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    ClothingItemComponent
+    ClothingItemComponent,
+    DetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

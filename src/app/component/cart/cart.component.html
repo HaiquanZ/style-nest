@@ -1,0 +1,53 @@
+<div>
+    <div *ngFor="let item of listProduct">
+        <div style="display: grid; grid-template-columns: .8fr 3fr; gap: 20px;" class="mg-b-15">
+            <div *ngIf="item.quantity">
+                <img width="100%" src="{{item.img}}" alt="">
+            </div>
+            <div *ngIf="item.quantity">
+                <h5 nz-typography>{{item.name}}</h5>
+                <div nz-row>
+                    <div class="circle" [ngStyle]="{'background-color': item.color}"></div>
+                    <span class="mg-l-10">{{item.color}}</span>
+                    <span class="mg-l-10 mg-r-10">|</span>
+                    <span>Kích thước: {{item.size}}</span>
+                </div>
+                <div nz-row nzJustify="space-between" nzAlign="middle" class="mg-t-30">
+                    <h4>{{item.price}} VND</h4>
+                    <div>
+                        <span class="mt-r-10">Số lượng: </span>
+                        <nz-input-number [(ngModel)]="item.quantity" [nzMin]="0" [nzMax]="100" [nzStep]="1"
+                            (ngModelChange)="changeQuantity()"></nz-input-number>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="dashed-line" *ngIf="item.quantity">
+    </div>
+</div>
+<div class="mg-t-60">
+    <div nz-row nzJustify="space-between" nzAlign="middle" style="cursor: pointer;">
+        <div>
+            <span style="font-size: 14px;" nz-icon nzType="tag" nzTheme="outline"></span>
+            <span class="mg-l-10" style="font-weight: 500;">Mã ưu đãi</span>
+        </div>
+        <div style="font-weight: 500;" class="select-voucher">
+            Chọn mã ưu đãi >
+        </div>
+    </div>
+    <hr class="dashed-line">
+    <div>
+        <div nz-row nzJustify="space-between">
+            <div>Giá trị đơn hàng: </div>
+            <div>{{total}}</div>
+        </div>
+        <div nz-row nzJustify="space-between">
+            <div>Giảm giá: </div>
+            <div>{{discount}}</div>
+        </div>
+        <div nz-row nzJustify="space-between" style="font-weight: 600;">
+            <div>Tạm tính: </div>
+            <div>{{total + discount}}</div>
+        </div>
+    </div>
+</div>

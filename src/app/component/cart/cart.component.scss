@@ -1,0 +1,17 @@
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.select-voucher:hover {
+    color: var(--primary-color);
+    transition: all .3s ease-in-out;
+}
+
+.dashed-line {
+    border: none;
+    border-top: 2px dashed var(--gray-color);
+    width: 100%;
+    margin: 20px 0;
+}

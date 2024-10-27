@@ -1,7 +1,9 @@
 <div class="container mg-t-20 mg-b-20" nz-row nzAlign="middle" nzJustify="space-between">
   <div nz-row nzAlign="middle">
-    <div class="mg-r-35 item-header" style="color: var(--primary-color); font-weight: 600; font-size: 24px;">StyleNest</div>
-    <div class="mg-r-20 item-header">TRANG CHỦ</div>
+    <div routerLink="/" class="mg-r-35 item-header"
+      style="color: var(--primary-color); font-weight: 600; font-size: 24px;">StyleNest
+    </div>
+    <div routerLink="/" class="mg-r-20 item-header">TRANG CHỦ</div>
     <div class="mg-r-20 item-header">SẢN PHẨM MỚI</div>
     <div class="mg-r-20 item-header">SALE</div>
   </div>
@@ -20,16 +22,93 @@
       <span nz-icon nzType="user-add" nzTheme="outline"></span>
       <div>Tài khoản</div>
     </div>
-    <div class="mg-l-25 item-header" style="text-align: center;">
+    <div class="mg-l-25 item-header" style="text-align: center;" (click)="open()">
       <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
       <div>Giỏ hàng</div>
     </div>
   </div>
 </div>
 
+
 <div>
   <router-outlet></router-outlet>
 </div>
+
+<div class="container">
+  <h3 nz-typography>Đăng ký nhận thông tin mới nhất</h3>
+  <h4 class="mg-b-20" style="color: var(--gray-color);">Cùng NestStyle cập nhật những thông tin mới nhất về thời trang
+    và phong cách sống</h4>
+
+  <nz-input-group style="width: 650px;" nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <input type="text" nz-input placeholder="Nhập email đăng ký của bạn" />
+  </nz-input-group>
+  <ng-template #suffixButton>
+    <button nz-button nzType="primary" nzSize="large" nzSearch>Đăng ký</button>
+  </ng-template>
+</div>
+
+<hr class="mg-t-50">
+
+<div class="container mg-t-35 mg-b-45" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px;">
+  <div style="text-align: left;" class="item-footer">
+    <h5 nz-typography>CÔNG TY CỔ PHẦN STYLENEST</h5>
+    <div>Số ĐKKD: 0107574310, ngày cấp: 23/09/2016</div>
+    <div>Nơi cấp: Sở Kế hoạch và đầu tư Hà Nội</div>
+    <div>Địa chỉ trụ sở tại số 688 Đường Quang Trung, Phường La Khê, Quận Hà Đông, Thành phố Hà Nội.</div>
+    <div>Địa chỉ liên hệ: P301, tầng 3, tòa nhà GP Invest, số 170 La Thành, Phường Ô Chợ Dừa, Quận Đống Đa, Thành Phố Hà
+      Nội.</div>
+    <div>Điện thoại: +8424 - 7303.0222</div>
+    <div>Fax: +8424 - 6277.6419</div>
+    <div>Email: hello@canifa.com</div>
+  </div>
+  <div style="text-align: left;" class="item-footer-2">
+    <h5 nz-typography>THƯƠNG HIỆU</h5>
+    <div>Giới thiệu</div>
+    <div>Tin tức</div>
+    <div>Tuyển dụng</div>
+    <div>Với cộng đồng</div>
+    <div>Hệ thống cửa hàng</div>
+    <div>Liên hệ</div>
+  </div>
+  <div style="text-align: left;" class="item-footer-2">
+    <h5 nz-typography>HỖ TRỢ</h5>
+    <div>Hỏi đáp</div>
+    <div>Chính sách KHTT</div>
+    <div>Điều kiện - Điều khoản Chính sách KHTT</div>
+    <div>Chính sách vận chuyển</div>
+    <div>Gợi ý tìm size</div>
+    <div>Kiểm tra đơn hàng</div>
+    <div>Tra cứu điểm thẻ</div>
+    <div>Chính sách bảo mật thông tin khách hàng</div>
+  </div>
+  <div style="text-align: left;">
+    <h5 nz-typography>TẢI ỨNG DỤNG</h5>
+    <img src="../assets//qr-app.png" alt="qr">
+    <h5 nz-typography class="mg-t-30">LIÊN HỆ</h5>
+    <div class="icon-contact">
+      <span nz-icon nzType="facebook" nzTheme="outline"></span>
+      <span nz-icon nzType="youtube" nzTheme="outline"></span>
+      <span nz-icon nzType="google" nzTheme="outline"></span>
+      <span nz-icon nzType="whats-app" nzTheme="outline"></span>
+    </div>
+  </div>
+</div>
+
+<hr class="mg-t-25">
+
+<nz-drawer [nzBodyStyle]="{ overflow: 'auto' }" [nzMaskClosable]="false" [nzWidth]="500" [nzVisible]="visible"
+  nzTitle="Giỏ hàng của bạn" [nzFooter]="footerTpl" (nzOnClose)="close()">
+  <ng-container *nzDrawerContent>
+    <app-cart></app-cart>
+  </ng-container>
+</nz-drawer>
+
+<ng-template #footerTpl>
+  <div style="float: right">
+    <button nz-button style="margin-right: 8px;" (click)="close()">Hủy</button>
+    <button nz-button nzType="primary" (click)="close()">Thanh toán</button>
+  </div>
+</ng-template>
 
 <ng-template #suffixIconSearch>
   <span nz-icon nzType="search"></span>
