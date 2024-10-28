@@ -17,6 +17,9 @@ import { ClothingItemComponent } from './component/clothing-item/clothing-item.c
 import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './component/cart/cart.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { ListProductComponent } from './pages/list-product/list-product.component';
+import { LoginComponent } from './component/login/login.component';
+import { AccountComponent } from './pages/account/account.component';
 
 registerLocaleData(vi);
 
@@ -28,7 +31,10 @@ registerLocaleData(vi);
     ClothingItemComponent,
     DetailComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    ListProductComponent,
+    LoginComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

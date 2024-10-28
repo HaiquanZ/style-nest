@@ -4,7 +4,7 @@
       style="color: var(--primary-color); font-weight: 600; font-size: 24px;">StyleNest
     </div>
     <div routerLink="/" class="mg-r-20 item-header">TRANG CHỦ</div>
-    <div class="mg-r-20 item-header">SẢN PHẨM MỚI</div>
+    <div routerLink="/list" class="mg-r-20 item-header">SẢN PHẨM MỚI</div>
     <div class="mg-r-20 item-header">SALE</div>
   </div>
 
@@ -14,11 +14,11 @@
         <input type="text" nz-input placeholder="Tìm kiếm" />
       </nz-input-group>
     </div>
-    <div class="mg-l-25 item-header" style="text-align: center;">
+    <div routerLink="/list" class="mg-l-25 item-header" style="text-align: center;">
       <span nz-icon nzType="appstore" nzTheme="outline"></span>
       <div>Cửa hàng</div>
     </div>
-    <div class="mg-l-25 item-header" style="text-align: center;">
+    <div class="mg-l-25 item-header" style="text-align: center;" (click)="handleClickAccount()">
       <span nz-icon nzType="user-add" nzTheme="outline"></span>
       <div>Tài khoản</div>
     </div>
@@ -106,7 +106,7 @@
 <ng-template #footerTpl>
   <div style="float: right">
     <button nz-button style="margin-right: 8px;" (click)="close()">Hủy</button>
-    <button nz-button nzType="primary" (click)="close()">Thanh toán</button>
+    <button nz-button nzType="primary" (click)="pay()">Thanh toán</button>
   </div>
 </ng-template>
 

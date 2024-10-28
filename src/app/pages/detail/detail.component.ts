@@ -52,7 +52,6 @@ export class DetailComponent {
   imageSelected = this.listImgaeProduct[0];
   sizeSelected = 'XS';
   colorSelected = this.colorList[0];
-
   isShow = false;
 
   showSizeModal() {

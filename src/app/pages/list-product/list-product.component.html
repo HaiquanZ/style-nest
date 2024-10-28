@@ -1,0 +1,32 @@
+<div>
+    <div class="mg-t-30 mg-b-30">
+        <img width="100%" src="https://media.canifa.com/Simiconnector/spmoi_cate_desktop-17Oct.webp" alt="">
+    </div>
+
+    <div class="container" nz-row nzJustify="space-between" nzAlign="middle">
+        <nz-radio-group [nzSize]="'large'" [(ngModel)]="categorySelected" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="tatca">TẤT CẢ</label>
+            <label nz-radio-button nzValue="nu">NỮ</label>
+            <label nz-radio-button nzValue="nam">NAM</label>
+            <label nz-radio-button nzValue="betrai">BÉ GÁI</label>
+            <label nz-radio-button nzValue="begai">BÉ TRAI</label>
+        </nz-radio-group>
+
+        <div nz-row nzAlign="middle">
+            <div class="mg-r-20" style="font-size: 14px;">
+                Bạn cần tìm:
+            </div>
+            <div>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn loại" [(ngModel)]="typeSelected">
+                    <nz-option *ngFor="let item of listType" nzCustomContent nzLabel="{{item}}" nzValue="{{item}}">
+                        {{item}}
+                    </nz-option>
+                </nz-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mg-t-40 mg-b-30" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
+        <app-clothing-item *ngFor="let item of listType"></app-clothing-item>
+    </div>
+</div>

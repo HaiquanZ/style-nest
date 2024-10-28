@@ -1,0 +1,41 @@
+<div>
+    <div>
+        <img width="100%" src="https://media.canifa.com/system/banner/default/Slide55-web_desktop.png" alt="">
+    </div>
+
+    <div>
+        <h3 class="mg-t-20">Đăng nhập</h3>
+        <div>Đăng nhập miễn phí để trở thành Khách hàng thân thiết và nhận ưu đãi độc quyền từ <span
+                style="color: var(--primary-color);">StyleNest</span>.</div>
+
+        <div class="mg-t-20">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập sai định dạng!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input formControlName="userName" placeholder="Số điện thoại hoặc mail" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Nhập sai định dạng!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <div *ngIf="isLogin">
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Đăng nhập</button>
+                    Hoặc
+                    <span style="color: var(--primary-color); cursor: pointer;" (click)="changeType()"> đăng ký mới!</span>
+                </div>
+
+                <div *ngIf="!isLogin">
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Đăng ký</button>
+                    Hoặc
+                    <span style="color: var(--primary-color); cursor: pointer;" (click)="changeType()"> đăng nhập ngay!</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
