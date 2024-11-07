@@ -25,6 +25,10 @@ import { UserManagerComponent } from './pages/admin/user-manager/user-manager.co
 import { ProductManagerComponent } from './pages/admin/product-manager/product-manager.component';
 import { StatisticalComponent } from './pages/admin/statistical/statistical.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { VndCurrencyPipe } from './pipe/vnd-currency.pipe';
+import { AreaComponent } from './pages/admin/statistical/area/area.component';
+import { PieComponent } from './pages/admin/statistical/pie/pie.component';
+import { ColumnComponent } from './pages/admin/statistical/column/column.component';
 
 registerLocaleData(vi);
 
@@ -43,7 +47,11 @@ registerLocaleData(vi);
     AdminComponent,
     UserManagerComponent,
     ProductManagerComponent,
-    StatisticalComponent
+    StatisticalComponent,
+    VndCurrencyPipe,
+    AreaComponent,
+    PieComponent,
+    ColumnComponent
   ],
   imports: [
     BrowserModule,

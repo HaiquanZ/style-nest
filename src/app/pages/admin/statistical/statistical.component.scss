@@ -1,0 +1,8 @@
+nz-card{
+    cursor: pointer;
+}
+
+nz-card:hover{
+    transform: scale(1.05);
+    transition: all .5s ease-in-out;
+}

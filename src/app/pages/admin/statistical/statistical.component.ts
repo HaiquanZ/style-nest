@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./statistical.component.scss']
 })
 export class StatisticalComponent {
+  type = 1;
 
+  changeType(type: number){
+    this.type = type;
+  }
 }

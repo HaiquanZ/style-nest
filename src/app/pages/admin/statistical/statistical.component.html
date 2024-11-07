@@ -1,3 +1,68 @@
 <div>
-    hello
-</div>>
+    <h1>Trang thống kê <span style="color: var(--primary-color); font-weight: 600;">StyleNest</span>
+    </h1>
+
+    <div class="mg-t-30" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px;">
+        <nz-card (click)="changeType(1)">
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-15">
+                    <span style="font-size: 40px; color: var(--primary-color);" nz-icon nzType="money-collect" nzTheme="outline"></span>
+                </div>
+                <div>
+                    <h3>{{10000000000 | vndCurrency }}</h3>
+                    <div>Tổng số doanh thu</div>
+                </div>
+            </div>
+        </nz-card>
+
+        <nz-card (click)="changeType(2)">
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-15">
+                    <span style="font-size: 40px; color: var(--warning-weight);" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                </div>
+                <div>
+                    <h3>10</h3>
+                    <div>Tổng số đơn hàng</div>
+                </div>
+            </div>
+        </nz-card>
+
+        <nz-card (click)="changeType(3)">
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-15">
+                    <span style="font-size: 40px; color: var(--success-weight);" nz-icon nzType="user-switch" nzTheme="outline"></span>
+                </div>
+                <div>
+                    <h3>10</h3>
+                    <div>Tổng số người dùng</div>
+                </div>
+            </div>
+        </nz-card>
+
+        <nz-card (click)="changeType(4)">
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-15">
+                    <span style="font-size: 40px; color: var(--error-weight);" nz-icon nzType="skin" nzTheme="outline"></span>
+                </div>
+                <div>
+                    <h3>10</h3>
+                    <div>Tổng số sản phẩm</div>
+                </div>
+            </div>
+        </nz-card>
+    </div>
+
+    <div class="mg-t-30 mg-b-40">
+        <div *ngIf="type == 1">
+            <app-area></app-area>
+        </div>
+        <div *ngIf="type == 4" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px">
+            <div>
+                <app-column></app-column>
+            </div>
+            <div>
+                <app-pie></app-pie>
+            </div>
+        </div>
+    </div>
+</div>
