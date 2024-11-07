@@ -20,6 +20,11 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { LoginComponent } from './component/login/login.component';
 import { AccountComponent } from './pages/account/account.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
+import { ProductManagerComponent } from './pages/admin/product-manager/product-manager.component';
+import { StatisticalComponent } from './pages/admin/statistical/statistical.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 registerLocaleData(vi);
 
@@ -34,7 +39,11 @@ registerLocaleData(vi);
     PaymentComponent,
     ListProductComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    AdminComponent,
+    UserManagerComponent,
+    ProductManagerComponent,
+    StatisticalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,8 @@ registerLocaleData(vi);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AntdModule
+    AntdModule,
+    NgApexchartsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN }

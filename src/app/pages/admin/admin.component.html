@@ -1,0 +1,27 @@
+<div class="container">
+    <nz-tabset>
+          <nz-tab [nzTitle]="lineChart">
+            <ng-template #lineChart>
+                <span nz-icon nzType="line-chart" nzTheme="outline"></span>
+                Thống kê
+            </ng-template>
+            <app-statistical></app-statistical>
+          </nz-tab>
+    
+          <nz-tab [nzTitle]="titleTemplate">
+            <ng-template #titleTemplate>
+                <span nz-icon nzType="skin" nzTheme="outline"></span>
+                Quản lý sản phẩm
+            </ng-template>
+            <app-product-manager></app-product-manager>
+          </nz-tab>
+    
+          <nz-tab [nzTitle]="user">
+            <ng-template #user>
+                <span nz-icon nzType="user" nzTheme="outline"></span>
+                Quản lý người dùng
+            </ng-template>
+            <app-user-manager></app-user-manager>
+          </nz-tab>
+      </nz-tabset>
+</div>

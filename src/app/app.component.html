@@ -6,6 +6,7 @@
     <div routerLink="/" class="mg-r-20 item-header">TRANG CHỦ</div>
     <div routerLink="/list" class="mg-r-20 item-header">SẢN PHẨM MỚI</div>
     <div class="mg-r-20 item-header">SALE</div>
+    <div routerLink="/admin" *ngIf="isAdmin" class="mg-r-20 item-header">ADMIN PAGE</div>
   </div>
 
   <div nz-row nzAlign="middle">

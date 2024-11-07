@@ -6,6 +6,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { AccountComponent } from './pages/account/account.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   },
   {
     path: '**',

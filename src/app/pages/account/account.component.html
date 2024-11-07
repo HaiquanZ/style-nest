@@ -1,1 +1,96 @@
-<p>account works!</p>
+<div class="container mg-t-30 mg-b-30">
+    <nz-tabset>
+        <nz-tab [nzTitle]="account">
+            <ng-template #account>
+                <span nz-icon nzType="user"></span>
+                Tài khoản
+            </ng-template>
+            <div class="mg-t-35" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px">
+                <div>
+                    <nz-avatar class="mg-b-15" [nzSize]="'large'" nzText="U"
+                        style="color: var(--primary-color); background-color: #E6F7FF;"></nz-avatar>
+                    <h4 nz-typography>User Name</h4>
+                </div>
+                <div>
+                    <h3 style="text-align: left;" nz-typography>Thông tin tài khoản</h3>
+                    <div>
+                        <form nz-form nzLayout="vertical" [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="6" nzFor="gender">Giới Tính</nz-form-label>
+                                <nz-form-control [nzSpan]="14">
+                                    <nz-radio-group formControlName="gender">
+                                        <label nz-radio nzValue="male">Nam</label>
+                                        <label nz-radio nzValue="female">Nữ</label>
+                                        <label nz-radio nzValue="other">Khác</label>
+                                    </nz-radio-group>
+                                    <ng-container
+                                        *ngIf="personalForm.get('gender')?.invalid && personalForm.get('gender')?.touched">
+                                        <span style="color: red">Giới tính là bắt buộc</span>
+                                    </ng-container>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="6" nzFor="name">Họ và Tên</nz-form-label>
+                                <nz-form-control [nzSpan]="14">
+                                    <input nz-input formControlName="name" placeholder="Nhập họ và tên" />
+                                    <ng-container
+                                        *ngIf="personalForm.get('name')?.invalid && personalForm.get('name')?.touched">
+                                        <span style="color: red">Tên là bắt buộc</span>
+                                    </ng-container>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="6" nzFor="email">Email</nz-form-label>
+                                <nz-form-control [nzSpan]="14">
+                                    <input nz-input formControlName="email" placeholder="Nhập email" />
+                                    <ng-container
+                                        *ngIf="personalForm.get('email')?.invalid && personalForm.get('email')?.touched">
+                                        <span style="color: red">Email không hợp lệ</span>
+                                    </ng-container>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-label [nzSpan]="6" nzFor="phone">Số Điện Thoại</nz-form-label>
+                                <nz-form-control [nzSpan]="14">
+                                    <input nz-input formControlName="phone" id="phone"
+                                        placeholder="Nhập số điện thoại" />
+                                    <ng-container
+                                        *ngIf="personalForm.get('phone')?.invalid && personalForm.get('phone')?.touched">
+                                        <span style="color: red">Số điện thoại không hợp lệ</span>
+                                    </ng-container>
+                                </nz-form-control>
+                            </nz-form-item>
+
+                            <nz-form-item>
+                                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                                    <button nz-button nzType="primary" [disabled]="personalForm.invalid">Lưu thông
+                                        tin</button>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </nz-tab>
+
+        <nz-tab [nzTitle]="titleTemplate">
+            <ng-template #titleTemplate>
+                <span nz-icon nzType="shopping-cart"></span>
+                Đơn hàng
+            </ng-template>
+            <h3 nz-typography style="text-align: left;">Đơn hàng của bạn</h3>
+
+            <div class="order-item">
+                <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                    <div></div>
+                    <div></div>
+                    <hr class="dashed-line">
+                </div>
+            </div>
+        </nz-tab>
+    </nz-tabset>
+</div>

@@ -13,8 +13,11 @@ export class AppComponent {
   offsetTop = 0;
   visible = false;
   modalRefAnt?: NzModalRef;
+  isAdmin: string = '';
 
-  constructor(private router: Router, private modalService: NzModalService) { }
+  constructor(private router: Router, private modalService: NzModalService) { 
+    this.isAdmin = String(localStorage.getItem('isAdmin'));
+  }
 
   open(): void {
     this.visible = true;
