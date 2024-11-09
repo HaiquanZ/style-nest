@@ -56,6 +56,12 @@
         <div *ngIf="type == 1">
             <app-area></app-area>
         </div>
+        <div *ngIf="type == 2">
+            <app-double-area></app-double-area>
+        </div>
+        <div *ngIf="type == 3">
+            <app-line></app-line>
+        </div>
         <div *ngIf="type == 4" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px">
             <div>
                 <app-column></app-column>

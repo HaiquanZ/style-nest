@@ -29,6 +29,10 @@ import { VndCurrencyPipe } from './pipe/vnd-currency.pipe';
 import { AreaComponent } from './pages/admin/statistical/area/area.component';
 import { PieComponent } from './pages/admin/statistical/pie/pie.component';
 import { ColumnComponent } from './pages/admin/statistical/column/column.component';
+import { DoubleAreaComponent } from './pages/admin/statistical/double-area/double-area.component';
+import { LineComponent } from './pages/admin/statistical/line/line.component';
+import { ProductModalComponent } from './component/product-modal/product-modal.component';
+import { DeleteProductComponent } from './component/delete-product/delete-product.component';
 
 registerLocaleData(vi);
 
@@ -51,7 +55,11 @@ registerLocaleData(vi);
     VndCurrencyPipe,
     AreaComponent,
     PieComponent,
-    ColumnComponent
+    ColumnComponent,
+    DoubleAreaComponent,
+    LineComponent,
+    ProductModalComponent,
+    DeleteProductComponent
   ],
   imports: [
     BrowserModule,

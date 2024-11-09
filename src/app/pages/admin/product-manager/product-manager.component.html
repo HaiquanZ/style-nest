@@ -1,1 +1,39 @@
-<p>product-manager works!</p>
+<div>
+    <h3 nz-typography>Danh sách sản phẩm</h3>
+    <div style="text-align: left;" class="mg-b-25">
+        <button nz-button nzType="primary" nzSize="large" (click)="openModal(null)">
+            <span nz-icon nzType="plus" nzTheme="outline"></span>
+            Thêm sản phẩm
+        </button>
+    </div>
+    <div>
+        <nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare"
+                        [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of sortTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>
+                        <img style="height: 160px; width: auto;" src="{{ data.image }}" alt="">
+                    </td>
+                    <td>{{ data.price  | vndCurrency }}</td>
+                    <td>{{data.quantity}}</td>
+                    <td>
+                        <div nz-row>
+                            <button class="mg-b-10" nz-button nzType="primary" (click)="openModal(null)">Chỉnh sửa</button>
+                            <button nz-button nzType="primary" nzDanger (click)="deleteModal(null)">Xóa sản phẩm</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
