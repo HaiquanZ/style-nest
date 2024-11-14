@@ -8,7 +8,7 @@ import { vi_VN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AntdModule } from './component/antd/antd.module';
 import { HomeComponent } from './pages/home/home.component';
@@ -33,6 +33,8 @@ import { DoubleAreaComponent } from './pages/admin/statistical/double-area/doubl
 import { LineComponent } from './pages/admin/statistical/line/line.component';
 import { ProductModalComponent } from './component/product-modal/product-modal.component';
 import { DeleteProductComponent } from './component/delete-product/delete-product.component';
+import { Interceptor } from './services/interceptor.service';
+import { ErrorInterceptor } from './services/handle-error.service';
 
 registerLocaleData(vi);
 
@@ -59,7 +61,7 @@ registerLocaleData(vi);
     DoubleAreaComponent,
     LineComponent,
     ProductModalComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,9 @@ registerLocaleData(vi);
     NgApexchartsModule
   ],
   providers: [
-    { provide: NZ_I18N, useValue: vi_VN }
+    { provide: NZ_I18N, useValue: vi_VN },
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

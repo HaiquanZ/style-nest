@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/app/services/enviroment';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-detail',
@@ -6,16 +9,46 @@ import { Component } from '@angular/core';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent {
-  listImgaeProduct = [
-    'https://canifa.com/img/1517/2000/resize/2/l/2ls24w001-sb001-3.webp',
-    'https://canifa.com/img/1517/2000/resize/2/l/2ls24w001-sb001-128-1-ghep-u.webp',
-    'https://canifa.com/img/1517/2000/resize/2/l/2ls24w001-sb001-128-2.webp',
-    'https://canifa.com/img/1517/2000/resize/2/l/2ls24w001-sb001-2.webp',
-    'https://canifa.com/img/1517/2000/resize/2/l/2ls24w001-sr072-128-1-ghep-u.webp'
-  ];
-  colorList = [
-    '#7AA6A0', '#EEE2D6', '#212026', '#DE553D'
-  ];
+  productInfo: any;
+  idProduct: any;
+  loading: boolean = true;
+  imageSelected = '';
+  colorSelected = '';
+  listImgaeProduct: any = [];
+  colorList: any = [];
+  sizeSelected = 'XS';
+  isShow = false;
+
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.idProduct = params.get('id');
+    })
+    this.productService.getDetailProduct(this.idProduct, 
+      (res: any) => {
+        if(res){
+          this.productInfo = res.data;
+          this.loading = false;
+          res.data.images.forEach((item: string) => {
+            this.listImgaeProduct.push('http://vkl.vinhdd.io.vn:8080/' + 'images/' +item);
+          });
+          // console.log(this.listImgaeProduct);
+          this.imageSelected = this.listImgaeProduct[0];
+          res.data.models.forEach((item: any) => {
+            if(!this.colorList.includes(item.color))
+            this.colorList.push(item.color);
+          })
+          this.colorSelected = this.colorList[0];
+          // console.log(this.productInfo);
+        }
+      }
+    )
+  }
+
   listOfData = [
     {
       key: '1',
@@ -48,11 +81,6 @@ export class DetailComponent {
       weight: '59-64'
     }
   ];
-
-  imageSelected = this.listImgaeProduct[0];
-  sizeSelected = 'XS';
-  colorSelected = this.colorList[0];
-  isShow = false;
 
   showSizeModal() {
     this.isShow = true;

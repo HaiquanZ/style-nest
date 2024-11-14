@@ -1,103 +1,99 @@
 <div class="container mg-t-35 mg-b-30">
-    <div style="display: grid;grid-template-columns: 1fr .2fr 1.2fr; gap: 30px;">
-        <div>
-            <img nz-image style="width: 100%;" src="{{imageSelected}}" alt="" />
-        </div>
-        <div>
-            <div *ngFor="let image of listImgaeProduct" class="mg-l-5 mg-r-5" (click)="changeImage(image)">
-                <input style="display: none;" type="radio" name="image-item" [value]="image"
-                    [(ngModel)]="imageSelected" />
-                <img src="{{image}}" width="100%" alt="" class="mg-b-10" style="cursor: pointer;">
+    <nz-spin  nzSize="large" [nzSpinning]="loading">
+        <div style="display: grid;grid-template-columns: 1fr .2fr 1.2fr; gap: 30px;">
+            <div>
+                <img nz-image style="width: 100%;" src="{{imageSelected}}" alt="" />
             </div>
-        </div>
-        <div style="text-align: left;">
-            <h2>Bộ mặc nhà bé trai có hình in</h2>
-            <div style="font-size: 14px;">Mã sp: 2LS24W001-SR072</div>
-            <h2 class="mg-t-30">179.100 ₫</h2>
-            <h4>
-                <del>199.000 đ</del>
-                <span class="mg-l-10" style="color: #F82C31;">-10%</span>
-            </h4>
-
-            <h3 class="mg-t-20">Màu sắc: {{colorSelected}}</h3>
-            <div nz-row class="mg-t-10 mg-b-10">
-                <div *ngFor="let color of colorList" class="mg-l-5 mg-r-5">
-                    <input type="radio" name="color" [value]="color" [(ngModel)]="colorSelected"
-                        [style.background-color]="color" />
+            <div>
+                <div *ngFor="let image of listImgaeProduct" class="mg-l-5 mg-r-5" (click)="changeImage(image)">
+                    <input style="display: none;" type="radio" name="image-item" [value]="image"
+                        [(ngModel)]="imageSelected" />
+                    <img src="{{image}}" width="100%" alt="" class="mg-b-10" style="cursor: pointer;">
                 </div>
             </div>
-
-            <div class="mg-t-30 mg-b-10" nz-row nzJustify="space-between">
-                <h3>Kích cỡ:</h3>
-                <div style="font-size: 14px; color: var(--primary-color); cursor: pointer;">
-                    <span nz-icon nzType="skin" nzTheme="outline"></span>
-                    <span class="mg-l-10" (click)="showSizeModal()">Gợi ý tìm size ></span>
+            <div style="text-align: left;">
+                <h2>{{productInfo?.name}}</h2>
+                <div style="font-size: 14px;">Mã sp: {{productInfo?.id}}</div>
+                <h2 class="mg-t-30">{{productInfo?.price | vndCurrency}}</h2>
+                <h4>
+                    <del>{{productInfo?.price * 1.1 | vndCurrency}}</del>
+                    <span class="mg-l-10" style="color: #F82C31;">-10%</span>
+                </h4>
+    
+                <h3 class="mg-t-20">Màu sắc: {{colorSelected}}</h3>
+                <div nz-row class="mg-t-10 mg-b-10">
+                    <div *ngFor="let color of colorList" class="mg-l-5 mg-r-5">
+                        <input type="radio" name="color" [value]="color" [(ngModel)]="colorSelected"
+                            [style.background-color]="color" />
+                    </div>
+                </div>
+    
+                <div class="mg-t-30 mg-b-10" nz-row nzJustify="space-between">
+                    <h3>Kích cỡ:</h3>
+                    <div style="font-size: 14px; color: var(--primary-color); cursor: pointer;">
+                        <span nz-icon nzType="skin" nzTheme="outline"></span>
+                        <span class="mg-l-10" (click)="showSizeModal()">Gợi ý tìm size ></span>
+                    </div>
+                </div>
+    
+                <div>
+                    <nz-radio-group [(ngModel)]="sizeSelected" nzButtonStyle="solid">
+                        <label nz-radio-button nzValue="XS">XS</label>
+                        <label nz-radio-button nzValue="S">S</label>
+                        <label nz-radio-button nzValue="M">M</label>
+                        <label nz-radio-button nzValue="L">L</label>
+                        <label nz-radio-button nzValue="XL">XL</label>
+                    </nz-radio-group>
+                </div>
+    
+                <div class="mg-t-20 mg-b-50">
+                    <button nz-button nzType="primary" style="width: 50%; height: 40px;">Thêm vào giỏ</button>
+                    <button nz-button nzType="default" style="width: 50%; height: 40px;">Tìm tại cửa hàng</button>
+                </div>
+    
+                <div class="mg-t-40">
+                    <h3>Mô tả</h3>
+                    <div style="font-size: 14px;">{{productInfo?.description}}</div>
+                    <hr>
+                    <h3>Chất liệu</h3>
+                    <div style="font-size: 14px;">60% cotton 40% polyester.</div>
+                    <hr>
+                    <h3>Hướng dẫn sử dụng</h3>
+                    <div style="font-size: 14px;">
+                        {{productInfo?.instruction}}
+                    </div>
+                    <hr>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="container mg-t-100 mg-b-100" nz-row nzJustify="space-between" nzAlign="middle">
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-20">
+                    <img width="50" height="50" src="../../../assets/service1.png" alt="Services">
+                </div>
+                <div>
+                    <h5 nz-typography>Thanh toán khi nhận hàng (COD)</h5>
+                    <span>Giao hàng toàn quốc.</span>
                 </div>
             </div>
-
-            <div>
-                <nz-radio-group [(ngModel)]="sizeSelected" nzButtonStyle="solid">
-                    <label nz-radio-button nzValue="XS">XS</label>
-                    <label nz-radio-button nzValue="S">S</label>
-                    <label nz-radio-button nzValue="M">M</label>
-                    <label nz-radio-button nzValue="L">L</label>
-                    <label nz-radio-button nzValue="XL">XL</label>
-                </nz-radio-group>
-            </div>
-
-            <div class="mg-t-20 mg-b-50">
-                <button nz-button nzType="primary" style="width: 50%; height: 40px;">Thêm vào giỏ</button>
-                <button nz-button nzType="default" style="width: 50%; height: 40px;">Tìm tại cửa hàng</button>
-            </div>
-
-            <div class="mg-t-40">
-                <h3>Mô tả</h3>
-                <div style="font-size: 14px;">Bộ mặc nhà giá tốt bé trai phối màu, chất liệu cotton pha mềm mại, hình in
-                    đa dạng phù hợp sở thích
-                    của các bé.</div>
-                <hr>
-                <h3>Chất liệu</h3>
-                <div style="font-size: 14px;">60% cotton 40% polyester.</div>
-                <hr>
-                <h3>Hướng dẫn sử dụng</h3>
-                <div style="font-size: 14px;">Giặt máy ở chế độ nhẹ, nhiệt độ thường.
-                    Không sử dụng hóa chất tẩy có chứa Clo.
-                    Phơi trong bóng mát.
-                    Không sử dụng máy sấy.
-                    Là ở nhiệt độ thấp 110 độ C.
-                    Giặt riêng quần áo tối màu. Không ngâm. Sản phẩm dễ tạo xơ vón, loại bỏ bằng kéo hoặc máy cạo xơ.
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service2.png" alt="Services"></div>
+                <div>
+                    <h5 nz-typography>Miễn phí giao hàng</h5> <span>Với đơn hàng trên
+                        599.000đ.</span>
                 </div>
-                <hr>
             </div>
-
-        </div>
-    </div>
-
-    <div class="container mg-t-100 mg-b-100" nz-row nzJustify="space-between" nzAlign="middle">
-        <div nz-row nzAlign="middle">
-            <div class="mg-r-20">
-                <img width="50" height="50" src="../../../assets/service1.png" alt="Services">
-            </div>
-            <div>
-                <h5 nz-typography>Thanh toán khi nhận hàng (COD)</h5>
-                <span>Giao hàng toàn quốc.</span>
+            <div nz-row nzAlign="middle">
+                <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service3.png" alt="Services"></div>
+                <div>
+                    <h5 nz-typography>Đổi hàng miễn phí</h5> <span>Trong 30 ngày kể từ ngày
+                        mua.</span>
+                </div>
             </div>
         </div>
-        <div nz-row nzAlign="middle">
-            <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service2.png" alt="Services"></div>
-            <div>
-                <h5 nz-typography>Miễn phí giao hàng</h5> <span>Với đơn hàng trên
-                    599.000đ.</span>
-            </div>
-        </div>
-        <div nz-row nzAlign="middle">
-            <div class="mg-r-20"><img width="50" height="50" src="../../../assets/service3.png" alt="Services"></div>
-            <div>
-                <h5 nz-typography>Đổi hàng miễn phí</h5> <span>Trong 30 ngày kể từ ngày
-                    mua.</span>
-            </div>
-        </div>
-    </div>
+    </nz-spin>
 </div>
 
 <nz-modal [(nzVisible)]="isShow" nzTitle="Hướng dẫn chọn size" (nzOnCancel)="handleOK()" (nzOnOk)="handleOK()">
