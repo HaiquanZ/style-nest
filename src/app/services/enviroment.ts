@@ -4,12 +4,7 @@ export const environment = {
     },
     path: {
         auth: {
-            GET_USER: '/user',
-            LOGIN: '/user/login',
-            REGISTER: '/user/register',
-            FORGOT_PASSWORD: '/user/forgot-password',
-            CONFIRM_OTP: '/user/confirm-otp',
-            SEARCH_USER: '/user/search'
+            LOGIN: 'login'
         },
         product: {
             GET_DETAIL: 'products/'
