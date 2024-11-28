@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-list-product',
@@ -13,4 +14,20 @@ export class ListProductComponent {
 
   categorySelected: string = 'tatca';
   typeSelected: string = 'Tất cả';
+  listProduct: any = [];
+  isSpinning: boolean = true;
+
+  constructor(
+    private productService: ProductService
+  ){}
+
+  ngOnInit(){
+    this.productService.getProductsByCategory('nam', (res: any) => {
+      if(res){
+        console.log(res);
+        this.listProduct = res.data;
+        this.isSpinning = false;
+      }
+    })
+  }
 }

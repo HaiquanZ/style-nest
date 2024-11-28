@@ -73,14 +73,7 @@
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
-            <app-clothing-item></app-clothing-item>
+            <app-clothing-item *ngFor="let item of productListNu" [data]="item" (click)="showDetailProduct(item.id)"></app-clothing-item>
         </div>
     </div>
 </div>

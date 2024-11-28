@@ -8,7 +8,8 @@ export const environment = {
             REGISTER: 'register'
         },
         product: {
-            GET_DETAIL: 'products/'
+            GET_DETAIL: 'products/',
+            GET_CATEGORY: 'products/category/'
         }
     }
 };

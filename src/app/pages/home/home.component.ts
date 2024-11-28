@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -43,4 +45,23 @@ export class HomeComponent {
       img: 'https://media.canifa.com/Simiconnector/boy_spmoi-04Oct.webp'
     },
   ];
+
+  productListNu: any = [];
+
+  constructor(
+    private productService: ProductService,
+    private router: Router
+  ){}
+
+  ngOnInit(){
+    this.productService.getProductsByCategory('nu', (res: any) => {
+      if(res){
+        this.productListNu = res.data.slice(0,8);
+      }
+    })
+  }
+
+  showDetailProduct(id: string){
+    this.router.navigate([`/detail/${id}`]);
+  }
 }

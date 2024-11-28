@@ -1,5 +1,5 @@
 <div class="mg-b-20">
-    <nz-card nz-popover nzHoverable style="width: 100%" [nzCover]="coverTemplate" nzPopoverTitle="Bộ mặc nhà nam"
+    <nz-card nz-popover nzHoverable style="width: 100%" [nzCover]="coverTemplate" nzPopoverTitle="{{data.name}}"
         nzPopoverContent="Xem chi tiết">
         <div nz-row nzJustify="center" class="mg-b-10">
             <div *ngFor="let color of colorList" class="mg-l-5 mg-r-5">
@@ -8,9 +8,9 @@
                 <!-- <label [style.color]="color">{{ color.name }}</label> -->
             </div>
         </div>
-        <nz-card-meta nzTitle="Bộ mặc nhà nam" nzDescription="599.000 ₫"></nz-card-meta>
+        <nz-card-meta nzTitle="{{data.name}}" nzDescription="{{data.price | vndCurrency}}"></nz-card-meta>
     </nz-card>
 </div>
 <ng-template #coverTemplate>
-    <img alt="example" src="https://canifa.com/img/500/750/resize/8/l/8ls24w001-sb060-xl-1-ghep-u.webp" />
+    <img alt="example" src="{{img}}" />
 </ng-template>
