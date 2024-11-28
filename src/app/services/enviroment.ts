@@ -1,10 +1,11 @@
 export const environment = {
     server: {
-        apiUrl: 'http://192.168.100.100:8080/',
+        apiUrl: 'http://vkl.vinhdd.io.vn:8080/',
     },
     path: {
         auth: {
-            LOGIN: 'login'
+            LOGIN: 'login',
+            REGISTER: 'register'
         },
         product: {
             GET_DETAIL: 'products/'

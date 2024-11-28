@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AccountComponent {
   personalForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private notification: NzNotificationService
+  ) {
     this.personalForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -24,5 +30,18 @@ export class AccountComponent {
     } else {
       console.log("Form không hợp lệ");
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+    this.notification
+      .blank(
+        'Đăng xuất thành công!',
+        'Bạn đã đăng xuất thành công.'
+      )
+      .onClick.subscribe(() => {
+        console.log('notification clicked!');
+      });
   }
 }

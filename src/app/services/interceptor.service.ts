@@ -8,17 +8,20 @@ export class Interceptor implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add token
-    const token = localStorage.getItem('token');
-    let headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      // 'Content-Type': 'application/json'
-    });
-
-
     // add base URL
     let url = '';
     url = `${environment.server.apiUrl}${req.url}`
+
+    // add token
+    const token = localStorage.getItem('token');
+    let headers;
+
+    if(req.url != 'login' && req.url != 'register'){
+      headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        // 'Content-Type': 'application/json'
+      });
+    }
 
     // Clone request
     const modifiedReq = req.clone({
