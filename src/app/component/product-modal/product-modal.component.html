@@ -1,1 +1,27 @@
-<p>product-modal works!</p>
+<div>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Tên sản phẩm</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Trường thông tin bắt buộc">
+                <input nz-input formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="price" nzRequired>Giá</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Giá sản phẩm">
+                <input nz-input type="price" id="price" formControlName="price" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="stock" nzRequired>stock</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your stock!">
+                <input nz-input type="stock" id="stock" formControlName="stock" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                <button nz-button nzType="primary">Tạo/ Chỉnh sửa sản phẩm</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>

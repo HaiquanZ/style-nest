@@ -16,12 +16,12 @@ export class Interceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     let headers;
 
-    if(req.url != 'login' && req.url != 'register'){
-      headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`,
-        // 'Content-Type': 'application/json'
-      });
-    }
+    // if(req.url != 'login' && req.url != 'register'){
+    //   headers = new HttpHeaders({
+    //     'Authorization': `Bearer ${token}`,
+    //     // 'Content-Type': 'application/json'
+    //   });
+    // }
 
     // Clone request
     const modifiedReq = req.clone({

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { DeleteProductComponent } from 'src/app/component/delete-product/delete-product.component';
 import { ProductModalComponent } from 'src/app/component/product-modal/product-modal.component';
+import { environment } from 'src/app/services/enviroment';
+import { ProductService } from 'src/app/services/product.service';
 
 interface ItemData {
   id: string;
@@ -18,7 +20,32 @@ interface ItemData {
 })
 export class ProductManagerComponent {
   modalRefAnt?: NzModalRef;
-  constructor(private modalService: NzModalService){}
+  listOfData: ItemData[] = [];
+
+  constructor(
+    private modalService: NzModalService,
+    private productService: ProductService
+  ){
+    this.productService.getProductsByCategory('nu', (res: any) => {
+      if(res){
+        res.data.forEach((item: any) => {
+          this.listOfData.push({
+            id: item.id,
+            name: item.name,
+            image: environment.server.apiUrl + 'images/' + item.images[0],
+            price: item.price,
+            quantity: item.stock
+          })
+        });
+        console.log(this.listOfData);
+      }
+    })
+  }
+
+  ngOnInit(){
+    
+  }
+
   listOfColumn = [
     {
       title: 'Mã sản phẩm',
@@ -44,57 +71,6 @@ export class ProductManagerComponent {
       title: 'Số lượng kho',
       compare: (a: ItemData, b: ItemData) => a.quantity - b.quantity,
       priority: 4
-    }
-  ];
-  listOfData: ItemData[] = [
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
-    },
-    {
-      id: 'd0e9b364-4c69-46d8-9526-4903af2a4347',
-      name: 'Bộ mặc nhà nam',
-      image: 'https://canifa.com/img/1517/2000/resize/6/l/6ls24s009-cm076-thumb.webp',
-      price: 1000000,
-      quantity: 100
     }
   ];
 

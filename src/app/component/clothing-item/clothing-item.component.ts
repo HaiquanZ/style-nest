@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from 'src/app/services/enviroment';
 
 @Component({
   selector: 'app-clothing-item',
@@ -21,6 +22,6 @@ export class ClothingItemComponent {
       this.colorList.push(item.color);
     });
     this.colorSelected = this.colorList[0];
-    this.img = 'http://vkl.vinhdd.io.vn:8080/images/' + this.data.images[0]
+    this.img = environment.server.apiUrl + 'images/' + this.data.images[0]
   }
 }
