@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -50,7 +51,7 @@ export class HomeComponent {
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
   ){}
 
   ngOnInit(){
@@ -58,7 +59,7 @@ export class HomeComponent {
       if(res){
         this.productListNu = res.data.slice(0,8);
       }
-    })
+    });
   }
 
   showDetailProduct(id: string){

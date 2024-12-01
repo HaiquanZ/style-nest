@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-account',
@@ -14,7 +15,8 @@ export class AccountComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private userService: UserService
   ) {
     this.personalForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -35,6 +37,7 @@ export class AccountComponent {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
+    this.userService.isAdmin.next(false);
     this.notification
       .blank(
         'Đăng xuất thành công!',

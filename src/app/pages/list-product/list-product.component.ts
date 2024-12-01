@@ -12,9 +12,10 @@ export class ListProductComponent {
     'Váy liền thân', 'Áo Kiều', 'Đồ lót', 'Váy', 'Tất cả'
   ];
 
-  categorySelected: string = 'tatca';
+  categorySelected: string = 'nu';
   typeSelected: string = 'Tất cả';
   listProduct: any = [];
+  listCategory: string = 'nu';
   isSpinning: boolean = true;
 
   constructor(
@@ -22,7 +23,17 @@ export class ListProductComponent {
   ){}
 
   ngOnInit(){
-    this.productService.getProductsByCategory('nam', (res: any) => {
+    // this.productService.getCategory((res: any) => {
+    //   if(res){
+    //     this.listCategory = res.data;
+    //   }
+    // });
+    this.getData();
+  }
+
+  getData(){
+    this.isSpinning = true;
+    this.productService.getProductsByCategory(this.categorySelected, (res: any) => {
       if(res){
         console.log(res);
         this.listProduct = res.data;

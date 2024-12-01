@@ -10,6 +10,9 @@ export const environment = {
         product: {
             GET_DETAIL: 'products/',
             GET_CATEGORY: 'products/category/'
+        },
+        category: {
+            GET_CATEGORY: 'categories'
         }
     }
 };

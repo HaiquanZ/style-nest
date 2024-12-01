@@ -18,6 +18,7 @@ export class DetailComponent {
   colorList: any = [];
   sizeSelected = 'XS';
   isShow = false;
+  idModel: string = '';
 
   constructor(
     private productService: ProductService,
@@ -47,6 +48,15 @@ export class DetailComponent {
         }
       }
     )
+  }
+
+  changeIdModel(){
+    this.productInfo.models.forEach((item: any) => {
+      if(item.size == this.sizeSelected && item.color == this.colorSelected){
+        this.idModel = item.id;
+        console.log(this.idModel);
+      }
+    })
   }
 
   listOfData = [
@@ -92,5 +102,11 @@ export class DetailComponent {
 
   changeImage(image: string) {
     this.imageSelected = image;
+  }
+
+  addProductToCart(){
+    if(localStorage.getItem('token')){
+      
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from './enviroment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { environment } from './enviroment';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+
+  public isAdmin = new BehaviorSubject<boolean>(false);
 
   login(data: any, callBack: Function): any{
     this.http.post(environment.path.auth.LOGIN, data, { observe: 'response' }).subscribe(

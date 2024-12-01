@@ -41,6 +41,9 @@ export class LoginComponent {
             localStorage.setItem('token', res.data.token);
             this.close();
 
+            this.userService.isAdmin.next(res.data.roles[0] == 'ADMIN');
+            console.log(res.data.roles[0] == 'ADMIN');
+
             this.notification
               .blank(
                 'Đăng nhập thành công!',

@@ -5,12 +5,12 @@
         </div>
     
         <div class="container" nz-row nzJustify="space-between" nzAlign="middle">
-            <nz-radio-group [nzSize]="'large'" [(ngModel)]="categorySelected" nzButtonStyle="solid">
-                <label nz-radio-button nzValue="tatca">TẤT CẢ</label>
+            <nz-radio-group [nzSize]="'large'" [(ngModel)]="categorySelected" (ngModelChange)="getData()" nzButtonStyle="solid">
+                <!-- <label nz-radio-button nzValue="tatca">TẤT CẢ</label> -->
                 <label nz-radio-button nzValue="nu">NỮ</label>
                 <label nz-radio-button nzValue="nam">NAM</label>
-                <label nz-radio-button nzValue="betrai">BÉ GÁI</label>
-                <label nz-radio-button nzValue="begai">BÉ TRAI</label>
+                <!-- <label nz-radio-button nzValue="betrai">BÉ GÁI</label>
+                <label nz-radio-button nzValue="begai">BÉ TRAI</label> -->
             </nz-radio-group>
     
             <div nz-row nzAlign="middle">
@@ -28,7 +28,7 @@
         </div>
     
         <div class="container mg-t-40 mg-b-30" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
-            <app-clothing-item *ngFor="let item of listProduct"></app-clothing-item>
+            <app-clothing-item *ngFor="let item of listProduct" [data]="item"></app-clothing-item>
         </div>
     </nz-spin>
 </div>

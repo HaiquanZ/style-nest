@@ -23,7 +23,7 @@
                 <h3 class="mg-t-20">Màu sắc: {{colorSelected}}</h3>
                 <div nz-row class="mg-t-10 mg-b-10">
                     <div *ngFor="let color of colorList" class="mg-l-5 mg-r-5">
-                        <input type="radio" name="color" [value]="color" [(ngModel)]="colorSelected"
+                        <input type="radio" (click)="changeIdModel()" name="color" [value]="color" [(ngModel)]="colorSelected"
                             [style.background-color]="color" />
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
     
                 <div>
-                    <nz-radio-group [(ngModel)]="sizeSelected" nzButtonStyle="solid">
+                    <nz-radio-group [(ngModel)]="sizeSelected" nzButtonStyle="solid" (ngModelChange)="changeIdModel()">
                         <label nz-radio-button nzValue="XS">XS</label>
                         <label nz-radio-button nzValue="S">S</label>
                         <label nz-radio-button nzValue="M">M</label>
@@ -47,7 +47,7 @@
                 </div>
     
                 <div class="mg-t-20 mg-b-50">
-                    <button nz-button nzType="primary" style="width: 50%; height: 40px;">Thêm vào giỏ</button>
+                    <button nz-button nzType="primary" style="width: 50%; height: 40px;" (click)="addProductToCart()">Thêm vào giỏ</button>
                     <button nz-button nzType="default" style="width: 50%; height: 40px;">Tìm tại cửa hàng</button>
                 </div>
     

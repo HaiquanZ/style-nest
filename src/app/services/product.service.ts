@@ -40,4 +40,20 @@ export class ProductService {
       }
     )
   }
+
+  getCategory(callBack: Function): any{
+    this.http.get(environment.path.category.GET_CATEGORY, { observe: 'response' }).subscribe(
+      (response: any) => {
+        if(response.body){
+          callBack(response.body);
+        }
+      },
+      error => {
+        if(callBack){
+          console.log(error);
+          callBack(null);
+        }
+      }
+    )
+  }
 }

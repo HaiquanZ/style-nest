@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LoginComponent } from './component/login/login.component';
+import { UserService } from './services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,20 @@ export class AppComponent {
   offsetTop = 0;
   visible = false;
   modalRefAnt?: NzModalRef;
-  isAdmin: string = '';
+  isAdmin: boolean = false;
+  private isAdminSubscription: Subscription | undefined;
 
-  constructor(private router: Router, private modalService: NzModalService) { 
-    this.isAdmin = String(localStorage.getItem('isAdmin'));
+  constructor(private router: Router, private modalService: NzModalService, private userService: UserService) {
+  }
+
+  ngOninit() {
+    this.isAdminSubscription = this.userService.isAdmin.subscribe(data => this.isAdmin = data);
+  }
+
+  ngOnDestroy(): void {
+    if (this.isAdminSubscription) {
+      this.isAdminSubscription.unsubscribe();
+    }
   }
 
   open(): void {
@@ -32,17 +44,17 @@ export class AppComponent {
     this.router.navigate(['/payment']);
   }
 
-  handleClickAccount(){
+  handleClickAccount() {
     let token = localStorage.getItem('token');
     console.log(token);
-    if(token){
+    if (token) {
       this.router.navigate(['/account']);
-    }else{
+    } else {
       this.openLoginModal();
     }
   }
 
-  openLoginModal(){
+  openLoginModal() {
     this.modalRefAnt = this.modalService.create({
       nzTitle: 'Đăng nhập',
       nzContent: LoginComponent,
