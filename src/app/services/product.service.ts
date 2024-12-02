@@ -56,4 +56,20 @@ export class ProductService {
       }
     )
   }
+
+  checkout(data: any, callBack: Function): any{
+    this.http.post(environment.path.product.CHECK_OUT, data, { observe: 'response' }).subscribe(
+      (response: any) => {
+        if(response.body){
+          callBack(response.body);
+        }
+      },
+      error => {
+        if(callBack){
+          console.log(error);
+          callBack(null);
+        }
+      }
+    )
+  }
 }

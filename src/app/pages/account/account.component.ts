@@ -35,9 +35,9 @@ export class AccountComponent {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/']);
-    this.userService.isAdmin.next(false);
+    this.userService.updateRole(false);
     this.notification
       .blank(
         'Đăng xuất thành công!',

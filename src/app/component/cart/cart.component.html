@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="listProduct.length">
     <div *ngFor="let item of listProduct">
         <div style="display: grid; grid-template-columns: .8fr 3fr; gap: 20px;" class="mg-b-15">
             <div *ngIf="item.quantity">
@@ -17,7 +17,7 @@
                     <div>
                         <span class="mt-r-10">Số lượng: </span>
                         <nz-input-number [(ngModel)]="item.quantity" [nzMin]="0" [nzMax]="100" [nzStep]="1"
-                            (ngModelChange)="changeQuantity()"></nz-input-number>
+                            (ngModelChange)="changeQuantity(item.id, $event)"></nz-input-number>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <hr class="dashed-line" *ngIf="item.quantity">
     </div>
 </div>
-<div class="mg-t-60">
+<div class="mg-t-60" *ngIf="listProduct.length">
     <div nz-row nzJustify="space-between" nzAlign="middle" style="cursor: pointer;">
         <div>
             <span style="font-size: 14px;" nz-icon nzType="tag" nzTheme="outline"></span>
@@ -51,3 +51,15 @@
         </div>
     </div>
 </div>
+
+<nz-empty *ngIf="!listProduct.length" nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+    [nzNotFoundContent]="contentTpl" [nzNotFoundFooter]="footerTpl">
+    <ng-template #contentTpl>
+        <span>
+            Giỏ hàng của bạn trống
+        </span>
+    </ng-template>
+    <ng-template #footerTpl>
+        <button nz-button nzType="primary">Shop now</button>
+    </ng-template>
+</nz-empty>

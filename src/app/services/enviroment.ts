@@ -5,11 +5,14 @@ export const environment = {
     path: {
         auth: {
             LOGIN: 'login',
-            REGISTER: 'register'
+            REGISTER: 'register',
+            GET_CART: 'cart',
+            ADD_CART: 'cart/add'
         },
         product: {
             GET_DETAIL: 'products/',
-            GET_CATEGORY: 'products/category/'
+            GET_CATEGORY: 'products/category/',
+            CHECK_OUT: 'orders/checkout'
         },
         category: {
             GET_CATEGORY: 'categories'

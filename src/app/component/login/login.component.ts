@@ -39,10 +39,11 @@ export class LoginComponent {
         this.userService.login(data, (res: any) => {
           if (res) {
             localStorage.setItem('token', res.data.token);
+            this.userService.updateRole(res.data.roles[0] == 'ADMIN');
             this.close();
+            console.log(this.userService.data$);
 
-            this.userService.isAdmin.next(res.data.roles[0] == 'ADMIN');
-            console.log(res.data.roles[0] == 'ADMIN');
+            this.userService.getCart();
 
             this.notification
               .blank(

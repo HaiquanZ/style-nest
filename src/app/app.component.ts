@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { LoginComponent } from './component/login/login.component';
 import { UserService } from './services/user.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,20 +14,11 @@ export class AppComponent {
   offsetTop = 0;
   visible = false;
   modalRefAnt?: NzModalRef;
-  isAdmin: boolean = false;
-  private isAdminSubscription: Subscription | undefined;
 
-  constructor(private router: Router, private modalService: NzModalService, private userService: UserService) {
+  constructor(private router: Router, private modalService: NzModalService, public userService: UserService) {
   }
 
   ngOninit() {
-    this.isAdminSubscription = this.userService.isAdmin.subscribe(data => this.isAdmin = data);
-  }
-
-  ngOnDestroy(): void {
-    if (this.isAdminSubscription) {
-      this.isAdminSubscription.unsubscribe();
-    }
   }
 
   open(): void {
