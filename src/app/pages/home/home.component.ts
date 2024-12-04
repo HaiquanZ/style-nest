@@ -57,7 +57,7 @@ export class HomeComponent {
   ngOnInit(){
     this.productService.getProductsByCategory('nu', (res: any) => {
       if(res){
-        this.productListNu = res.data.slice(0,8);
+        this.productListNu = res.data.data.slice(0,8);
       }
     });
   }

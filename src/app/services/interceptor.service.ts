@@ -16,7 +16,9 @@ export class Interceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     let headers;
 
-    if(req.url == 'cart' || req.url == 'orders/checkout'){
+    let listUrl: string[] = ['cart', 'orders/checkout', 'cart/add'];
+
+    if(listUrl.includes(req.url)){
       headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`,
         // 'Content-Type': 'application/json'

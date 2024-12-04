@@ -36,7 +36,7 @@ export class ListProductComponent {
     this.productService.getProductsByCategory(this.categorySelected, (res: any) => {
       if(res){
         console.log(res);
-        this.listProduct = res.data;
+        this.listProduct = res.data.data;
         this.isSpinning = false;
       }
     })

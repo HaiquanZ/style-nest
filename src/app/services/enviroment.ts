@@ -16,6 +16,9 @@ export const environment = {
         },
         category: {
             GET_CATEGORY: 'categories'
+        },
+        admin: {
+            GET_USERS: 'admin/users'
         }
     }
 };

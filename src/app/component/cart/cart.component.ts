@@ -25,7 +25,7 @@ export class CartComponent {
       storedArray.forEach((item: any) => {
         this.listProduct.push({
           id: item.modelId,
-          name: item.model.name,
+          name: item.model.product.name,
           img: 'https://canifa.com/img/210/300/resize/6/t/6to24s001-sg618-thumb.webp',
           quantity: item.quantity,
           price: item.model.product.price,
