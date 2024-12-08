@@ -10,7 +10,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getListUses(data: any, callBack: Function): any{
-    this.http.post(environment.path.admin.GET_USERS, data, { observe: 'response' }).subscribe(
+    this.http.get(environment.path.admin.GET_USERS, { observe: 'response', params: data }).subscribe(
       (response: any) => {
         if(response.body){
           callBack(response.body);

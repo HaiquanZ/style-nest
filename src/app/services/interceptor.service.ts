@@ -16,12 +16,19 @@ export class Interceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     let headers;
 
-    let listUrl: string[] = ['cart', 'orders/checkout', 'cart/add'];
+    let listUrl: string[] = ['cart', 'orders/checkout', 'cart/add', 'admin/users', 'products'];
 
-    if(listUrl.includes(req.url)){
+    if(listUrl.includes(req.url) || (req.method == 'DELETE')){
       headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`,
         // 'Content-Type': 'application/json'
+      });
+    }
+
+    if(req.url == 'products'){
+      headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
       });
     }
 

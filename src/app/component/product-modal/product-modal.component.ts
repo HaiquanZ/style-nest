@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject, takeUntil } from 'rxjs';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-modal',
@@ -14,19 +17,25 @@ export class ProductModalComponent {
     name: this.fb.control('', [Validators.required]),
     price: this.fb.control('', [Validators.required, Validators.min(0)]),
     stock: this.fb.control('', [Validators.required, Validators.min(0)]),
-    nickname: this.fb.control('', [Validators.required]),
-    phoneNumberPrefix: this.fb.control<'+86' | '+87'>('+86'),
-    phoneNumber: this.fb.control('', [Validators.required]),
-    website: this.fb.control('', [Validators.required]),
-    captcha: this.fb.control('', [Validators.required]),
-    agree: this.fb.control(false)
+    description: this.fb.control('', [Validators.required]),
+    instruction: this.fb.control('', [Validators.required]),
+    materials: this.fb.control('', [Validators.required]),
+    categoryId: this.fb.control('nu', [Validators.required]),
   });
   captchaTooltipIcon: NzFormTooltipIcon = {
     type: 'info-circle',
     theme: 'twotone'
   };
 
-  constructor(private fb: NonNullableFormBuilder) {}
+  modelList: any[] = [];
+  formData = new FormData();
+
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private productService: ProductService,
+    private notification: NzNotificationService,
+    private modal: NzModalRef<ProductModalComponent>
+  ) {}
 
   ngOnInit(): void {
     
@@ -39,7 +48,24 @@ export class ProductModalComponent {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      let data = {
+        name: this.validateForm.value.name,
+        stock: this.validateForm.value.stock,
+        price: this.validateForm.value.price,
+        description: this.validateForm.value.description,
+        instruction: this.validateForm.value.instruction,
+        materials: this.validateForm.value.materials,
+        models: this.modelList,
+        categoryId: this.validateForm.value.categoryId
+      };
+
+      this.formData.append('data', JSON.stringify(data));
+      console.log(this.formData);
+      this.productService.createProduct(this.formData, (res: any) => {
+        if(res){
+          console.log(res);
+        }
+      })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -48,5 +74,29 @@ export class ProductModalComponent {
         }
       });
     }
+  }
+
+  addModel(){
+    this.modelList.push({
+      stock: 0,
+      color: '',
+      size: 'XS'
+    })
+  }
+
+  handleChange(e: any, colorCode: string){
+    // e.file.status = 'done';
+    // this.formData.append(colorCode, e.fileList[0].originFileObj)
+    // this.formData.forEach((value, key) => {
+    //   console.log(key, " ------------ ", value);
+    // });
+  }
+
+  beforeUpload(e: any, colorCode: string){
+    this.formData.append(colorCode, e)
+    this.formData.forEach((value, key) => {
+      console.log(key, " ------------ ", value);
+    });
+    return false;
   }
 }

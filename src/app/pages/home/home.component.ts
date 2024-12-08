@@ -48,6 +48,7 @@ export class HomeComponent {
   ];
 
   productListNu: any = [];
+  productListNam: any = [];
 
   constructor(
     private productService: ProductService,
@@ -58,6 +59,12 @@ export class HomeComponent {
     this.productService.getProductsByCategory('nu', (res: any) => {
       if(res){
         this.productListNu = res.data.data.slice(0,8);
+      }
+    });
+
+    this.productService.getProductsByCategory('nam', (res: any) => {
+      if(res){
+        this.productListNam = res.data.data.slice(0,8);
       }
     });
   }

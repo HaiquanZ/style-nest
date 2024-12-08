@@ -72,4 +72,36 @@ export class ProductService {
       }
     )
   }
+
+  createProduct(data: any, callBack: Function): any{
+    this.http.post(environment.path.product.CREATE_PRODUCT, data, { observe: 'response' }).subscribe(
+      (response: any) => {
+        if(response.body){
+          callBack(response.body);
+        }
+      },
+      error => {
+        if(callBack){
+          console.log(error);
+          callBack(null);
+        }
+      }
+    )
+  }
+
+  deleteProduct(data: any, callBack: Function): any{
+    this.http.delete(environment.path.product.CREATE_PRODUCT + `/${data}`, { observe: 'response' }).subscribe(
+      (response: any) => {
+        if(response.body){
+          callBack(response.body);
+        }
+      },
+      error => {
+        if(callBack){
+          console.log(error);
+          callBack(null);
+        }
+      }
+    )
+  }
 }

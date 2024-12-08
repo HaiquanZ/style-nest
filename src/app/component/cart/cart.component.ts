@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/app/services/enviroment';
 
 @Component({
   selector: 'app-cart',
@@ -26,7 +27,7 @@ export class CartComponent {
         this.listProduct.push({
           id: item.modelId,
           name: item.model.product.name,
-          img: 'https://canifa.com/img/210/300/resize/6/t/6to24s001-sg618-thumb.webp',
+          img: environment.server.apiUrl + 'images/' + item.model.product.productFiles[0].file.name,
           quantity: item.quantity,
           price: item.model.product.price,
           size: item.model.size,
@@ -37,7 +38,7 @@ export class CartComponent {
       this.listProduct.map(product => {
         this.total += product.price;
       })
-
+      console.log(this.listProduct);
       localStorage.setItem('total', String(this.total));
     }
   }

@@ -25,10 +25,17 @@ export class ProductManagerComponent {
   constructor(
     private modalService: NzModalService,
     private productService: ProductService
-  ){
+  ) { }
+
+  ngOnInit() {
+    this.getData()
+  }
+
+  getData() {
     this.productService.getProductsByCategory('nu', (res: any) => {
-      if(res){
-        res.data.forEach((item: any) => {
+      if (res) {
+        this.listOfData = [];
+        res.data.data.forEach((item: any) => {
           this.listOfData.push({
             id: item.id,
             name: item.name,
@@ -40,10 +47,6 @@ export class ProductManagerComponent {
         console.log(this.listOfData);
       }
     })
-  }
-
-  ngOnInit(){
-    
   }
 
   listOfColumn = [
@@ -74,7 +77,7 @@ export class ProductManagerComponent {
     }
   ];
 
-  openModal(data: any){
+  openModal(data: any) {
     this.modalRefAnt = this.modalService.create({
       nzTitle: 'Tạo/ Chỉnh sửa sản phẩm',
       nzContent: ProductModalComponent,
@@ -85,7 +88,7 @@ export class ProductManagerComponent {
     });
   }
 
-  deleteModal(data: any){
+  deleteModal(data: any) {
     this.modalRefAnt = this.modalService.create({
       nzTitle: 'Xóa sản phẩm',
       nzContent: DeleteProductComponent,
@@ -94,5 +97,11 @@ export class ProductManagerComponent {
       nzWidth: 500,
       nzCentered: true
     });
+
+    this.modalRefAnt.afterClose.subscribe(status => {
+      if (status) {
+        this.getData();
+      }
+    })
   }
 }

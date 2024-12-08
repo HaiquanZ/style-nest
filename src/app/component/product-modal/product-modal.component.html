@@ -1,5 +1,5 @@
 <div>
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <form nz-form [formGroup]="validateForm">
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Tên sản phẩm</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Trường thông tin bắt buộc">
@@ -13,15 +13,69 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="stock" nzRequired>stock</nz-form-label>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="stock" nzRequired>Số lượng</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your stock!">
                 <input nz-input type="stock" id="stock" formControlName="stock" />
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item nz-row class="register-area">
-            <nz-form-control [nzSpan]="14" [nzOffset]="6">
-                <button nz-button nzType="primary">Tạo/ Chỉnh sửa sản phẩm</button>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="description" nzRequired>Miêu tả</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your description!">
+                <input nz-input type="description" id="description" formControlName="description" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="instruction" nzRequired>Chỉ dẫn</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your instruction!">
+                <input nz-input type="instruction" id="instruction" formControlName="instruction" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="materials" nzRequired>Chất liệu</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your materials!">
+                <input nz-input type="materials" id="materials" formControlName="materials" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="12" nzFor="categoryId" nzRequired>Phân loại</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="12" nzErrorTip="Please input your categoryId!">
+                <nz-select formControlName="categoryId">
+                    <nz-option nzValue="nam" nzLabel="Nam"></nz-option>
+                    <nz-option nzValue="nu" nzLabel="Nữ"></nz-option>
+                </nz-select>
             </nz-form-control>
         </nz-form-item>
     </form>
+
+    <button nz-button nzType="primary" (click)="addModel()">Thêm model</button>
+
+    <div>
+        <div *ngFor="let item of modelList">
+            <div style="display: grid; grid-template-columns: 1fr 1fr .5fr 1fr; gap: 15px" class="mg-t-20 mg-b-20">
+                <input nz-input placeholder="Nhập số lượng" [(ngModel)]="item.stock" type="number" />
+                <input nz-input placeholder="Nhập màu sắc" [(ngModel)]="item.color" type="text" />
+                <nz-select [(ngModel)]="item.size">
+                    <nz-option nzValue="XS" nzLabel="XS"></nz-option>
+                    <nz-option nzValue="S" nzLabel="S"></nz-option>
+                    <nz-option nzValue="M" nzLabel="M"></nz-option>
+                    <nz-option nzValue="L" nzLabel="L"></nz-option>
+                    <nz-option nzValue="XL" nzLabel="XL"></nz-option>
+                </nz-select>
+                <nz-upload [nzHeaders]="{ authorization: 'authorization-text' }"
+                    (nzBeforeUpload)="beforeUpload($event, item.color)" (nzChange)="handleChange($event, item.color)">
+                    <button nz-button>
+                        <span nz-icon nzType="upload"></span>
+                        Thêm ảnh sản phẩm
+                    </button>
+                </nz-upload>
+            </div>
+        </div>
+    </div>
+
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button (click)="submitForm()" nz-button nzType="primary">Tạo/ Chỉnh sửa sản phẩm</button>
+        </nz-form-control>
+    </nz-form-item>
+
 </div>

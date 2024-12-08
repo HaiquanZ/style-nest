@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AdminService } from 'src/app/services/admin.service';
 
 interface ItemData {
   name: string;
@@ -52,4 +53,26 @@ export class UserManagerComponent {
       order: 60,
     }
   ];
+
+  constructor(
+    private adminService: AdminService
+  ){}
+
+  ngOnInit(){
+    this.adminService.getListUses({
+      page: 0,
+      pageSize: 100
+    }, (res: any) => {
+      this.listOfData = [];
+      if(res){
+        res.data.data.forEach((item: any) => {
+          this.listOfData.push({
+            name: item.username,
+            username: item.username,
+            order: Math.floor(Math.random() * (100 - 0 + 1)) + 0
+          })
+        })
+      }
+    })
+  }
 }

@@ -119,6 +119,10 @@ export class DetailComponent {
       img: environment.server.apiUrl + 'images/' + this.productInfo.images[0],
       quantity: 1
     });
+
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', JSON.stringify(storedArray));
+
     if (localStorage.getItem('token')) {
       this.userService.addtoCart({
         items: { [this.idModel]: 1 }

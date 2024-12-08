@@ -75,5 +75,13 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
             <app-clothing-item *ngFor="let item of productListNu" [data]="item" (click)="showDetailProduct(item.id)"></app-clothing-item>
         </div>
+
+        <div class="mg-t-20 mg-b-20">
+            <img src="https://media.canifa.com/Simiconnector/1.DoNi_blockhomepage_desktop-02.12.webp" width="100%">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
+            <app-clothing-item *ngFor="let item of productListNam" [data]="item" (click)="showDetailProduct(item.id)"></app-clothing-item>
+        </div>
     </div>
 </div>
