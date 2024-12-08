@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class ListProductComponent {
   isSpinning: boolean = true;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ){}
 
   ngOnInit(){
@@ -40,5 +42,9 @@ export class ListProductComponent {
         this.isSpinning = false;
       }
     })
+  }
+
+  showDetail(id: any){
+    this.router.navigate([`/detail/${id}`])
   }
 }

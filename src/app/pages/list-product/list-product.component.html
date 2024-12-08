@@ -28,7 +28,7 @@
         </div>
     
         <div class="container mg-t-40 mg-b-30" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 35px">
-            <app-clothing-item *ngFor="let item of listProduct" [data]="item"></app-clothing-item>
+            <app-clothing-item *ngFor="let item of listProduct" [data]="item" (click)="showDetail(item.id)"></app-clothing-item>
         </div>
     </nz-spin>
 </div>
