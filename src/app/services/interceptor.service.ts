@@ -25,12 +25,12 @@ export class Interceptor implements HttpInterceptor {
       });
     }
 
-    if(req.url == 'products'){
-      headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data'
-      });
-    }
+    // if(req.url == 'products'){
+    //   headers = new HttpHeaders({
+    //     'Authorization': `Bearer ${token}`,
+    //     'Content-Type': 'multipart/form-data'
+    //   });
+    // }
 
     // Clone request
     const modifiedReq = req.clone({

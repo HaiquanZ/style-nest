@@ -39,6 +39,7 @@ export class LoginComponent {
         this.userService.login(data, (res: any) => {
           if (res) {
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('username', res.data.username);
             this.userService.updateRole(res.data.roles[0] == 'ADMIN');
             this.close();
             console.log(this.userService.data$);

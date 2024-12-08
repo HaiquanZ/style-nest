@@ -26,6 +26,11 @@ export class AccountComponent {
     });
   }
 
+  username: string = 'User Name';
+  ngOnInit(){
+    this.username = String(localStorage.getItem('username'))
+  }
+
   onSubmit(): void {
     if (this.personalForm.valid) {
       console.log(this.personalForm.value);

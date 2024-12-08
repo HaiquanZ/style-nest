@@ -1,9 +1,11 @@
+import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { Subject, takeUntil } from 'rxjs';
+import { filter, Subject, takeUntil } from 'rxjs';
+import { environment } from 'src/app/services/enviroment';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -34,7 +36,8 @@ export class ProductModalComponent {
     private fb: NonNullableFormBuilder,
     private productService: ProductService,
     private notification: NzNotificationService,
-    private modal: NzModalRef<ProductModalComponent>
+    private modal: NzModalRef<ProductModalComponent>,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -61,11 +64,12 @@ export class ProductModalComponent {
 
       this.formData.append('data', JSON.stringify(data));
       console.log(this.formData);
-      this.productService.createProduct(this.formData, (res: any) => {
-        if(res){
-          console.log(res);
-        }
-      })
+      this.upload();
+      // this.productService.createProduct(this.formData, (res: any) => {
+      //   if(res){
+      //     console.log(res);
+      //   }
+      // })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -85,18 +89,46 @@ export class ProductModalComponent {
   }
 
   handleChange(e: any, colorCode: string){
-    // e.file.status = 'done';
-    // this.formData.append(colorCode, e.fileList[0].originFileObj)
-    // this.formData.forEach((value, key) => {
-    //   console.log(key, " ------------ ", value);
-    // });
+    if (this.formData.has(colorCode)) {
+      this.formData.delete(colorCode);
+    }
+    console.log(e);
+    this.formData.append(colorCode, e.fileList[0].originFileObj);
+    let index = 0;
+    this.formData.forEach((value, key) => {
+      console.log(index++);
+      console.log(key, " ------------ ", value);
+    });
   }
 
   beforeUpload(e: any, colorCode: string){
-    this.formData.append(colorCode, e)
-    this.formData.forEach((value, key) => {
-      console.log(key, " ------------ ", value);
+    // this.formData.append(colorCode, e);
+    // let index = 0;
+    // this.formData.forEach((value, key) => {
+    //   console.log(index++);
+    //   console.log(key, " ------------ ", value);
+    // });
+    // return false;
+  }
+
+  upload(){
+    let url = environment.path.product.CREATE_PRODUCT;
+
+    const req = new HttpRequest('POST', url, this.formData, {
+      // reportProgress: true
     });
-    return false;
+    this.http
+      .request(req)
+      .pipe(filter(e => e instanceof HttpResponse))
+      .subscribe(
+        (e: any) => {
+          console.log(e)
+          this.modal.close(true);
+        },
+        () => {
+          console.log('error');
+          this.modal.close();
+        }
+      );
   }
 }

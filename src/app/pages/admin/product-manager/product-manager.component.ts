@@ -86,6 +86,12 @@ export class ProductManagerComponent {
       nzWidth: 800,
       nzCentered: true
     });
+
+    this.modalRefAnt.afterClose.subscribe(status => {
+      if (status) {
+        this.getData();
+      }
+    })
   }
 
   deleteModal(data: any) {

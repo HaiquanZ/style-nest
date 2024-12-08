@@ -26,7 +26,11 @@ export class ProductService {
   }
 
   getProductsByCategory(category: string, callBack: Function): any{
-    this.http.get(environment.path.product.GET_CATEGORY + category, { observe: 'response' }).subscribe(
+    let params = {
+      page: 1,
+      pageSize: 100
+    }
+    this.http.get(environment.path.product.GET_CATEGORY + category, { observe: 'response', params: params }).subscribe(
       (response: any) => {
         if(response.body){
           callBack(response.body);
