@@ -8,7 +8,7 @@
                 <!-- <label [style.color]="color">{{ color.name }}</label> -->
             </div>
         </div>
-        <nz-card-meta nzTitle="{{data.name}}" nzDescription="{{data.price | vndCurrency}}"></nz-card-meta>
+        <nz-card-meta nzTitle="{{data.name | truncate}}" nzDescription="{{data.price | vndCurrency}}"></nz-card-meta>
     </nz-card>
 </div>
 <ng-template #coverTemplate>

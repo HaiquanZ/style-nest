@@ -35,6 +35,7 @@ import { ProductModalComponent } from './component/product-modal/product-modal.c
 import { DeleteProductComponent } from './component/delete-product/delete-product.component';
 import { Interceptor } from './services/interceptor.service';
 import { ErrorInterceptor } from './services/handle-error.service';
+import { TruncatePipe } from './pipe/truncate.pipe';
 
 registerLocaleData(vi);
 
@@ -62,6 +63,7 @@ registerLocaleData(vi);
     LineComponent,
     ProductModalComponent,
     DeleteProductComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
